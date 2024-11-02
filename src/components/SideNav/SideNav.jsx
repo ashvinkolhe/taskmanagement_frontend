@@ -6,7 +6,7 @@ import './SideNav.css'; // Import the CSS file
 import Logo from '../../assets/images/logo.svg';
 import Board from '../../assets/images/Board.svg';
 import Analytics from '../../assets/images/Analytics.svg';
-import Settings from '../../assets/images/Settings.svg';
+import Settings from '../../assets/images/settings.svg';
 import Logout from '../../assets/images/Logout.svg';
 import LogoutModal from "../Logout/LogoutModal";
 
