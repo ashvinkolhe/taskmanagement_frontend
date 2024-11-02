@@ -1,0 +1,109 @@
+.task {
+  background-color: white;
+  border: 1px solid #ddd;
+  padding: 16px;
+  border-radius: 8px; /* Slightly more rounded for better aesthetics */
+  margin-bottom: 16px;
+  position: relative;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.05); /* Soft shadow for depth */
+}
+
+.task-card-content {
+  color: black;
+  display: flex;
+  flex-direction: column;
+  gap: 12px; /* Adds space between sections within the task card */
+}
+
+.task-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  margin-bottom: 12px; /* Space between header and next section */
+}
+
+.task-title {
+  display: flex;
+  align-items: center;
+  gap: 8px; /* Space between priority dot and title text */
+}
+
+.priority-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.priority-dot.red { background-color: red; }
+.priority-dot.blue { background-color: blue; }
+.priority-dot.green { background-color: green; }
+
+.menu-icon {
+  cursor: pointer;
+  font-size: 18px;
+  margin-left: auto;
+  margin-right: 4px; /* Small space from the right */
+}
+
+.dropdown-menu {
+  position: absolute;
+  right: 0;
+  top: 100%;
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px; /* Space between dropdown buttons */
+  z-index: 10;
+  margin-top: 4px;
+}
+
+.dropdown-menu button {
+  background: none;
+  border: none;
+  color: black;
+  padding: 8px 12px; /* Adds padding inside each button */
+  text-align: left;
+  cursor: pointer;
+  width: 100%;
+  border-radius: 4px;
+}
+
+.dropdown-menu button:hover {
+  background-color: #f0f0f0;
+}
+
+.task-due-date {
+  margin-top: 8px;
+  padding: 4px 8px; /* Adds padding inside the date display */
+  border-radius: 8px;
+  display: inline-block;
+}
+
+.task-actions {
+  display: flex;
+  gap: 8px; /* Space between action buttons */
+}
+
+.checklist-header {
+  margin-bottom: 8px; /* Space between checklist header and checklist items */
+}
+
+.checklist {
+  display: flex;
+  flex-direction: column;
+  gap: 8px; /* Space between checklist items */
+}
+
+.add-subtask {
+  margin-top: 8px;
+  padding: 4px 8px;
+  border-radius: 4px;
+  border: 1px solid #ddd;
+  width: 100%;
+}

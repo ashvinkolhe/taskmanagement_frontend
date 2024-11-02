@@ -1,0 +1,88 @@
+/* src/styles/Logout.module.css */
+
+.modalBackground {
+  width: 100vw; /* Full width */
+  height: 100vh; /* Full height */
+  background: rgba(47, 47, 47, 0.75); /* Transparent dark background */
+  position: fixed; /* Fixed position */
+  top: 0; /* Align to the top */
+  left: 0; /* Align to the left */
+  display: flex; /* Center modal */
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  z-index: 1000; /* High z-index to overlay everything */
+      
+}
+
+/* Modal container styles */
+.modalContainer {
+  width: 335.19px; /* Fixed width for the modal */
+  height: 200px; /* Fixed height for the modal */
+  border-radius: 12px; /* Rounded corners */
+  background-color: white; /* Modal background color */
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; /* Shadow effect */
+  display: flex; /* Use flexbox */
+  flex-direction: column; /* Stack children vertically */
+  padding: 15px; /* Padding inside modal */
+  z-index: 1001; /* Ensure modal is above the background */
+}
+
+.title {
+  display: inline-block; /* Inline-block for centering */
+  text-align: center; /* Center text */
+  margin-top: 10px; /* Space above title */
+}
+
+.title h1 {
+  font-size: 19px; /* Title font size */
+}
+
+.titleCloseBtn button {
+  background-color: transparent; /* No background */
+  border: none; /* No border */
+  font-size: 25px; /* Font size */
+  cursor: pointer; /* Pointer cursor */
+}
+
+.footer {
+  flex: 1; /* Allow footer to expand */
+  display: flex; /* Flexbox for layout */
+  flex-direction: column; /* Stack buttons vertically */
+  justify-content: center; /* Center buttons */
+  align-items: center; /* Center buttons */
+}
+
+.footer button {
+  width: 20vw; /* Responsive button width */
+  height: 45px; /* Fixed button height */
+  margin: 10px; /* Margin between buttons */
+  border-radius: 18px; /* Rounded corners */
+  font-size: 20px; /* Button font size */
+  cursor: pointer; /* Pointer cursor */
+}
+
+.logoutButton {
+  font-family: 'Poppins', sans-serif; /* Font family */
+  font-weight: 600; /* Bold font */
+  background-color: transparent; /* Transparent background */
+  color: #17a2b8; /* Text color */
+  border: 2px solid #17a2b8; /* Button border */
+}
+
+.logoutButton:hover {
+  background-color: #17a2b8; /* Background on hover */
+  color: #fff; /* Text color on hover */
+}
+
+#cancelBtn {
+  font-family: 'Poppins', sans-serif; /* Font family */
+  font-weight: 600; /* Bold font */
+  background-color: transparent; /* Transparent background */
+  color: #cf3636; /* Text color */
+  border: 2px solid #cf3636; /* Button border */
+}
+
+#cancelBtn:hover {
+  background-color: #cf3636; /* Background on hover */
+  color: #fff; /* Text color on hover */
+}

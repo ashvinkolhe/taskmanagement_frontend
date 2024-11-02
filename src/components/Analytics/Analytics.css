@@ -1,0 +1,58 @@
+/* src/styles/Analytics.css */
+.analytics {
+    padding: 20px;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #ffffff; /* Background color for the entire analytics section */
+
+}
+
+.analytics h2 {
+    margin-top: 0; /* Remove default margin */
+    margin-left: -640px;
+}
+
+.analytics-container {
+    display: flex; /* Use flexbox for the columns */
+    justify-content: space-between; /* Space between the left and right columns */
+    width: 100%; /* Make the container full width */
+    max-width: 800px; /* Set a max width for better layout */
+    margin-top: 20px; /* Add some top margin for spacing */
+}
+
+.left-column,
+.right-column {
+    flex: 1; /* Allow both columns to grow equally */
+    margin: 20px; /* Space between columns */
+    padding: 20px; /* Adjust padding for better alignment */
+    background-color: #F9FCFF; /* Column background */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Shadow for depth */
+    display: flex; /* Enable flexbox for child elements */
+    flex-direction: column; /* Arrange children in a column */
+    align-items: flex-start; /* Align items to the start */
+    
+}
+
+.left-column h3,
+.right-column h3 {
+    margin-bottom: 10px; /* Space below the headings */
+}
+
+.analytics-stats,
+.priority-section {
+    width: 100%; /* Full width for sections */
+    margin-top: 10px; /* Space above sections */
+    display: flex;
+    flex-direction: column; /* Arrange items vertically */
+    align-items: flex-start; /* Align items to the start */
+    gap: 10px; /* Space between items */
+}
+
+/* Specific styles for individual task and priority items */
+.analytics-stats div,
+.priority-section div {
+    margin: 5px 0; /* Margin between items for better spacing */
+}

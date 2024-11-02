@@ -1,0 +1,47 @@
+/* src/styles/Settings.css */
+.settings {
+    padding: 70px;
+    max-width: 400px; /* Set a max width for better layout */
+    margin-left: 320px; /* Align the settings form to the left with a margin */
+    background-color: #ffffff; /* Background color for settings section */
+    border-radius: 10px; /* Rounded corners */
+}
+
+.settings h2 {
+    margin-top: 0; /* Remove default margin */
+    margin-bottom: 20px; /* Space below the heading */
+    margin-left: -120px;
+
+}
+
+.settings-field {
+    margin-bottom: 15px; /* Space between input fields */
+}
+
+.settings-field input {
+    width: 100%; /* Make the input field take the full width */
+    height: 40px; /* Match height with button */
+    padding-left: 50px; /* Adjust padding to prevent text overlap with the icon */
+    border: 1px solid #ccc; /* Add a border */
+    border-radius: 5px; /* Rounded corners */
+    outline: none; /* Remove outline on focus */
+    margin-left: -120px;
+
+}
+
+.settings-btn {
+    width: 100%; /* Match button width to input fields */
+    height: 40px; /* Match height with input fields */
+    background-color: #17A2B8; /* Update button background color */
+    color: white; /* Text color for button */
+    padding: 10px; /* Uniform padding for button */
+    border: none; /* Remove default border */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Change cursor to pointer on hover */
+    transition: background-color 0.3s; /* Smooth transition for hover effect */
+    margin-left: -120px;
+}
+
+button:hover {
+    background-color: #138496; /* Darker shade on hover */
+}
