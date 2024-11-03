@@ -7,7 +7,29 @@ const TaskCard = ({ task, moveTask, deleteTask, openEditModal }) => {
     const [subTasks, setSubTasks] = useState(task.subTasks || []);
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [isChecklistExpanded, setIsChecklistExpanded] = useState(false);
+    const [users, setUsers] = useState([]); // State for user data
+    const [assignedUser, setAssignedUser] = useState(task.assignedUser || ''); // State for assigned user
     const menuRef = useRef(null);
+
+    useEffect(() => {
+        // Fetch user data from the backend
+        const fetchUsers = async () => {
+            try {
+                const response = await fetch('/api/users'); // Adjust the endpoint as necessary
+                const data = await response.json();
+                setUsers(data); // Assume data is an array of user objects
+            } catch (error) {
+                console.error('Error fetching users:', error);
+            }
+        };
+
+        fetchUsers();
+
+        document.addEventListener('mousedown', handleClickOutside);
+        return () => {
+            document.removeEventListener('mousedown', handleClickOutside);
+        };
+    }, []);
 
     const addSubTask = (event) => {
         if (event.key === 'Enter' && event.target.value !== '') {
@@ -67,13 +89,6 @@ const TaskCard = ({ task, moveTask, deleteTask, openEditModal }) => {
         return '';
     };
 
-    useEffect(() => {
-        document.addEventListener('mousedown', handleClickOutside);
-        return () => {
-            document.removeEventListener('mousedown', handleClickOutside);
-        };
-    }, []);
-
     const toggleMenu = () => {
         setIsMenuOpen(!isMenuOpen);
     };
@@ -93,6 +108,11 @@ const TaskCard = ({ task, moveTask, deleteTask, openEditModal }) => {
         return date ? new Date(date).toLocaleDateString('en-US', options) : '';
     };
 
+    const handleUserChange = (event) => {
+        setAssignedUser(event.target.value);
+        task.assignedUser = event.target.value; // Update task object
+    };
+
     return (
         <div className="task" style={{ borderRadius: '12px' }}>
             <div className="task-card-content" style={{ borderRadius: '12px' }}>
@@ -100,6 +120,7 @@ const TaskCard = ({ task, moveTask, deleteTask, openEditModal }) => {
                     <h4>
                         {getPriorityDot()} {task.priority}
                     </h4>
+                    
                     <span className="menu-icon" onClick={toggleMenu} style={{ float: 'right' }}>
                         &#x22EE;
                     </span>
@@ -112,6 +133,8 @@ const TaskCard = ({ task, moveTask, deleteTask, openEditModal }) => {
                         </div>
                     )}
                 </div>
+                
+                <span className="task-title">{task.title}</span>
 
                 <div className="checklist-header">
                     <p>Checklist({subTasks.filter(st => st.isChecked).length}/{subTasks.length})

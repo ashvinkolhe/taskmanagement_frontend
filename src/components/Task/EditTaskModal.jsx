@@ -2,7 +2,7 @@
 /* eslint-disable no-unused-vars */
 // src/components/EditTaskModal.js
 import React, { useState } from 'react';
-import './Modal.css';
+import './EditTaskModal.css';
 
 const EditTaskModal = ({ closeModal, updateTask, task, users = [] }) => {
     const [title, setTitle] = useState(task.title);
@@ -23,27 +23,52 @@ const EditTaskModal = ({ closeModal, updateTask, task, users = [] }) => {
     );
 
     return (
-        <div className="modal">
-            <div className="modal-content">
-                <h3>Edit Task</h3>
+        <div className="modal-overlay">
+            <div className="task-card-modal">
+                <h2>Edit Task</h2>
                 <label>
-                    Title:
-                    <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} />
+                    Title *
+                    <input 
+                        type="text" 
+                        value={title} 
+                        onChange={(e) => setTitle(e.target.value)} 
+                        required 
+                    />
                 </label>
                 <label>
-                    Priority:
-                    <select value={priority} onChange={(e) => setPriority(e.target.value)}>
-                        <option value="Low">Low</option>
-                        <option value="Medium">Medium</option>
-                        <option value="High">High</option>
-                    </select>
+                    Select Priority *
+                    <div className="priority-selection">
+                        <button
+                            className={`priority-btn ${priority === 'High' ? 'active' : ''}`}
+                            onClick={() => setPriority('High')}
+                        >
+                            HIGH PRIORITY
+                        </button>
+                        <button
+                            className={`priority-btn ${priority === 'Medium' ? 'active' : ''}`}
+                            onClick={() => setPriority('Medium')}
+                        >
+                            MEDIUM PRIORITY
+                        </button>
+                        <button
+                            className={`priority-btn ${priority === 'Low' ? 'active' : ''}`}
+                            onClick={() => setPriority('Low')}
+                        >
+                            LOW PRIORITY
+                        </button>
+                    </div>
                 </label>
                 <label>
-                    Due Date:
-                    <input type="date" value={dueDate} onChange={(e) => setDueDate(e.target.value)} />
+                    Due Date *
+                    <input 
+                        type="date" 
+                        value={dueDate} 
+                        onChange={(e) => setDueDate(e.target.value)} 
+                        required 
+                    />
                 </label>
                 <label>
-                    Assign to User:
+                    Assign to User
                     <input 
                         type="text" 
                         placeholder="Search for a user..." 
@@ -51,7 +76,7 @@ const EditTaskModal = ({ closeModal, updateTask, task, users = [] }) => {
                         onChange={(e) => setSearchQuery(e.target.value)} 
                     />
                 </label>
-                <ul>
+                <ul className="user-list">
                     {filteredUsers.map((user) => (
                         <li key={user.id}>
                             <button onClick={() => setAssignedUser(user.name)}>
@@ -60,8 +85,10 @@ const EditTaskModal = ({ closeModal, updateTask, task, users = [] }) => {
                         </li>
                     ))}
                 </ul>
-                <button onClick={handleUpdateTask}>Update Task</button>
-                <button onClick={closeModal}>Cancel</button>
+                <div className="modal-footer">
+                    <button className="cancel-btn" onClick={closeModal}>Cancel</button>
+                    <button className="save-btn" onClick={handleUpdateTask}>Update Task</button>
+                </div>
             </div>
         </div>
     );

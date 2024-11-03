@@ -3,20 +3,50 @@
 import React from 'react';
 import styles from './Logout.module.css';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
-function Modal({ closeModal }) {
+function LogoutModal({ closeModal, setIsAuthenticated }) {
   const nav = useNavigate();
 
-  const logout = (e) => {
-    localStorage.removeItem('authtoken');
-    localStorage.removeItem('Name');
-    nav('/login');
+  const logout = async () => {
+    try {
+      // Call the logout API
+      const response = await axios.post(
+        'https://taskmanagement-backend-9ztm.onrender.com/api/users/logout',
+        {},
+        {
+          headers: {
+            'Authorization': `Bearer ${localStorage.getItem('authtoken')}`
+          }
+        }
+      );
+
+      // Check if logout was successful
+      if (response.status === 200) {
+        // Clear local storage
+        localStorage.removeItem('authtoken');
+        localStorage.removeItem('Name');
+
+        // Update authentication state
+        setIsAuthenticated(false); // Ensure the app knows the user is logged out
+
+        // Close the modal before redirecting
+        closeModal(false); 
+        
+        // Redirect to login page
+        nav('/login');
+      }
+    } catch (error) {
+      console.error('Logout failed:', error);
+      // Optionally handle logout error, e.g., show a notification to the user
+    }
   };
+
   return (
     <div className={styles.modalBackground}>
       <div className={styles.modalContainer}>
         <div className={styles.title}>
-          <h1>Are You Sure You Want to Logout</h1>
+          <h1>Are You Sure You Want to Logout?</h1>
         </div>
         <div className={styles.footer}>
           <button onClick={logout} className={styles.logoutButton}>
@@ -36,4 +66,4 @@ function Modal({ closeModal }) {
   );
 }
 
-export default Modal;
+export default LogoutModal;

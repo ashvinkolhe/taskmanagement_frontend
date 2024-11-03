@@ -1,8 +1,7 @@
-// src/components/AddTaskModal.js
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from 'react';
-import './Modal.css';
+import './AddTaskModal.css';
 
 const AddTaskModal = ({ closeModal, addTask, fetchUsers }) => {
     const [title, setTitle] = useState('');
@@ -61,23 +60,49 @@ const AddTaskModal = ({ closeModal, addTask, fetchUsers }) => {
             <div className="modal-content">
                 <h3>Add Task</h3>
                 <label>
-                    Title:
-                    <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} />
+                    Title *
+                    <input
+                        type="text"
+                        placeholder="Enter Task Title"
+                        value={title}
+                        onChange={(e) => setTitle(e.target.value)}
+                        required
+                    />
                 </label>
                 <label>
-                    Priority:
-                    <select value={priority} onChange={(e) => setPriority(e.target.value)}>
-                        <option value="Low">Low</option>
-                        <option value="Medium">Medium</option>
-                        <option value="High">High</option>
-                    </select>
+                    Select Priority *
+                    <div className="priority-selection">
+                        <button
+                            className={`priority-btn ${priority === 'High' ? 'active' : ''}`}
+                            onClick={() => setPriority('High')}
+                        >
+                            HIGH PRIORITY
+                        </button>
+                        <button
+                            className={`priority-btn ${priority === 'Medium' ? 'active' : ''}`}
+                            onClick={() => setPriority('Medium')}
+                        >
+                            MEDIUM PRIORITY
+                        </button>
+                        <button
+                            className={`priority-btn ${priority === 'Low' ? 'active' : ''}`}
+                            onClick={() => setPriority('Low')}
+                        >
+                            LOW PRIORITY
+                        </button>
+                    </div>
                 </label>
                 <label>
-                    Due Date:
-                    <input type="date" value={dueDate} onChange={(e) => setDueDate(e.target.value)} />
+                    Due Date *
+                    <input
+                        type="date"
+                        value={dueDate}
+                        onChange={(e) => setDueDate(e.target.value)}
+                        required
+                    />
                 </label>
                 <label>
-                    Assign User:
+                    Assign User
                     <input
                         type="text"
                         placeholder="Search for a user..."
@@ -98,8 +123,10 @@ const AddTaskModal = ({ closeModal, addTask, fetchUsers }) => {
                         </ul>
                     )}
                 </label>
-                <button onClick={handleAddTask}>Add Task</button>
-                <button onClick={closeModal}>Cancel</button>
+                <div className="modal-footer">
+                    <button className="cancel-btn" onClick={closeModal}>Cancel</button>
+                    <button className="add-task-btn" onClick={handleAddTask}>Add Task</button>
+                </div>
             </div>
         </div>
     );

@@ -14,14 +14,41 @@ const Settings = () => {
     const [newPassword, setNewPassword] = useState('');
     const [showOldPassword, setShowOldPassword] = useState(false);
     const [showNewPassword, setShowNewPassword] = useState(false);
+    const [error, setError] = useState(null); // State for error messages
 
-    const handleSaveSettings = () => {
-        localStorage.setItem('userSettings', JSON.stringify({ name, email, oldPassword, newPassword }));
-        alert('Settings saved!');
-        setName('');
-        setEmail('');
-        setOldPassword('');
-        setNewPassword('');
+    const handleSaveSettings = async () => {
+        try {
+            // Assuming you have an API endpoint for updating settings
+            const response = await fetch('https://taskmanagement-backend-9ztm.onrender.com/api/users/update-password', {
+                method: 'PUT', // Use POST or PUT based on your API
+                headers: {
+                    'Content-Type': 'application/json',
+                    // Add any authentication headers here if required
+                    'Authorization': `Bearer ${localStorage.getItem('token')}`, // Example for Bearer token
+                },
+                body: JSON.stringify({
+                    name,
+                    email,
+                    oldPassword,
+                    newPassword
+                }),
+            });
+
+            if (!response.ok) {
+                throw new Error('Failed to update settings');
+            }
+
+            alert('Settings updated successfully!');
+            // Reset fields after successful update
+            setName('');
+            setEmail('');
+            setOldPassword('');
+            setNewPassword('');
+            setError(null); // Clear error if any
+        } catch (err) {
+            console.error(err);
+            setError(err.message); // Set error message to display to user
+        }
     };
 
     const toggleOldPasswordVisibility = () => setShowOldPassword((prev) => !prev);
@@ -30,11 +57,12 @@ const Settings = () => {
     return (
         <div className="settings">
             <h2>Settings</h2>
+            {error && <div className="error-message">{error}</div>} {/* Display error message */}
             <div className="settings-field">
                 <input 
                     type="text" 
                     value={name} 
-                    onChange={(e) => setName(e.target.value)} 
+                    onChange={(e) => setName(e.target.value)} // Fixing onChange for name input
                     placeholder="Name" 
                     style={{ backgroundImage: `url(${UserIcon})`, backgroundRepeat: 'no-repeat', backgroundPosition: '10px center' }} 
                     required 

@@ -82,9 +82,14 @@ const Register = () => {
       toast.success('Registered Successfully ✅', { position: 'top-left' });
       setTimeout(() => navigate('/login'), 2000); // Redirect after a slight delay
     } catch (error) {
-      console.error('Registration error:', error); // Log any registration errors
-      toast.error('Registration failed. Please try again.', { position: 'top-left' }); // Notify user of failure
-    }
+      // Check if error message matches "User already exists"
+      if (error.response && error.response.data.message === "User already exists") {
+        toast.error('User with this email already exists', { position: 'top-left' });
+      } else {
+        console.error('Registration error:', error); // Log any other registration errors
+        toast.error('Registration failed. Please try again.', { position: 'top-left' }); // Notify user of failure
+      }
+   }
   };
 
   // Toggle password visibility for password input

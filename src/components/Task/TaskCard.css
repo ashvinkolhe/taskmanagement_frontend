@@ -24,10 +24,11 @@
 }
 
 .task-title {
-  display: flex;
-  align-items: center;
-  gap: 8px; /* Space between priority dot and title text */
+  font-size: large;
+  font-weight: bold;
+  background-color: white; /* Set background color to white */
 }
+
 
 .priority-dot {
   width: 10px;
