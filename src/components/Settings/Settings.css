@@ -15,7 +15,7 @@
 
 .settings-field {
     margin-bottom: 15px;
-    position: relative; /* Make the container for positioning the icon */
+    position: relative;
 }
 
 .settings-field input {
@@ -27,18 +27,20 @@
     border-radius: 5px;
     outline: none;
     margin-left: -120px;
+    box-sizing: border-box;
 }
 
 .toggle-password-icon {
-    width: 20px; /* Set a fixed width */
-    height: 20px; /* Set a fixed height */
+    width: 20px;
+    height: 20px;
     position: absolute;
     top: 50%;
-    right: 10px; /* Positioning from the right edge */
-    transform: translateY(-50%); /* Center vertically */
+    right: 10px;
+    transform: translateY(-50%);
     cursor: pointer;
     margin-right: 120px;
 }
+
 
 .settings-btn {
     width: 100%;
