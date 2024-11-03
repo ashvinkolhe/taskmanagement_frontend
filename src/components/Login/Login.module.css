@@ -25,53 +25,66 @@
 	align-items: center;
 }
 
+.inputWrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
 .userInput {
-	margin: 5px 0;
-	position: relative;
+    margin: 5px 0;
+    position: relative;
+    width: 413px;
+    padding-bottom: 20px; /* Space for the error message */
 }
 
 .userInput input {
-	width: 403px;
-	height: 55px;
-	border: 1.38px solid #d0d0d0;
-	border-radius: 11px;
-	padding-left: 4rem; 
-	font-size: 19px;
+    width: 100%;
+    height: 55px;
+    border: 1.38px solid #d0d0d0;
+    border-radius: 11px;
+    padding-left: 4rem;
+    font-size: 19px;
+    box-sizing: border-box;
 }
 
 .inputIcon {
-	width: 28.08px;
-	height: 28.08px;
-	position: absolute;
-	top: 50%;
-	left: 20px;
-	transform: translateY(-50%);
+    width: 28.08px;
+    height: 28.08px;
+    position: absolute;
+    top: 50%;
+    left: 20px;
+    transform: translateY(-50%);
+    pointer-events: none; 
+	margin-top: -10px;
 }
 
 .toggleIcon {
-	width: 28.08px;
-	height: 28.08px;
-	position: absolute;
-	top: 50%;
-	right: 6%;
-	transform: translateY(-50%);
-	cursor: pointer;
+    width: 28.08px;
+    height: 28.08px;
+    position: absolute;
+    top: 50%;
+    right: 6%;
+    transform: translateY(-50%);
+    cursor: pointer;	
+	margin-top: -10px;
 }
 
 .errorMessage {
-	color: rgb(255, 0, 0);
-	font-family: Open Sans, sans-serif;
-	font-size: 12px;
-	font-weight: 400;
-	display: flex;
-	justify-content: flex-start;
-	margin: 12px 0 0 10px;
-	position: relative;
-	bottom: 10px;
+    color: rgb(255, 0, 0);
+    font-family: Open Sans, sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    position: absolute;
+    bottom: 0; /* Positions it at the bottom of .userInput */
+    left: 0;
+    margin-top: 5px;
+    padding-left: 4rem; /* Aligns with the input text */
+	margin-left: -50px;
 }
 
 .loginbtn {
-	width: 480px;
+	width: 470px;
 	height: 55px;
 	background-color: #17a2b8;
 	border-radius: 40px;
@@ -96,7 +109,7 @@
 }
 
 .registerbtn {
-	width: 480px;
+	width: 470px;
 	height: 55px;
 	border-radius: 40px;
 	background-color: #fff;

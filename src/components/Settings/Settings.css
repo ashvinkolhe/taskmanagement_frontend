@@ -1,47 +1,58 @@
 /* src/styles/Settings.css */
 .settings {
     padding: 70px;
-    max-width: 400px; /* Set a max width for better layout */
-    margin-left: 320px; /* Align the settings form to the left with a margin */
-    background-color: #ffffff; /* Background color for settings section */
-    border-radius: 10px; /* Rounded corners */
+    max-width: 400px;
+    margin-left: 320px;
+    background-color: #ffffff;
+    border-radius: 10px;
 }
 
 .settings h2 {
-    margin-top: 0; /* Remove default margin */
-    margin-bottom: 20px; /* Space below the heading */
+    margin-top: 0;
+    margin-bottom: 20px;
     margin-left: -120px;
-
 }
 
 .settings-field {
-    margin-bottom: 15px; /* Space between input fields */
+    margin-bottom: 15px;
+    position: relative; /* Make the container for positioning the icon */
 }
 
 .settings-field input {
-    width: 100%; /* Make the input field take the full width */
-    height: 40px; /* Match height with button */
-    padding-left: 50px; /* Adjust padding to prevent text overlap with the icon */
-    border: 1px solid #ccc; /* Add a border */
-    border-radius: 5px; /* Rounded corners */
-    outline: none; /* Remove outline on focus */
+    width: 100%;
+    height: 40px;
+    padding-left: 50px; /* Space for left icon */
+    padding-right: 50px; /* Space for right icon */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
     margin-left: -120px;
+}
 
+.toggle-password-icon {
+    width: 20px; /* Set a fixed width */
+    height: 20px; /* Set a fixed height */
+    position: absolute;
+    top: 50%;
+    right: 10px; /* Positioning from the right edge */
+    transform: translateY(-50%); /* Center vertically */
+    cursor: pointer;
+    margin-right: 120px;
 }
 
 .settings-btn {
-    width: 100%; /* Match button width to input fields */
-    height: 40px; /* Match height with input fields */
-    background-color: #17A2B8; /* Update button background color */
-    color: white; /* Text color for button */
-    padding: 10px; /* Uniform padding for button */
-    border: none; /* Remove default border */
-    border-radius: 5px; /* Rounded corners */
-    cursor: pointer; /* Change cursor to pointer on hover */
-    transition: background-color 0.3s; /* Smooth transition for hover effect */
+    width: 100%;
+    height: 40px;
+    background-color: #17A2B8;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
     margin-left: -120px;
 }
 
 button:hover {
-    background-color: #138496; /* Darker shade on hover */
+    background-color: #138496;
 }

@@ -14,7 +14,7 @@ const TaskCard = ({ task, moveTask, deleteTask, openEditModal }) => {
             const newSubTasks = [...subTasks, { name: event.target.value, isChecked: false }];
             setSubTasks(newSubTasks);
             task.subTasks = newSubTasks;
-            event.target.value = ''; // Clear the input after adding
+            event.target.value = ''; 
         }
     };
 
@@ -28,7 +28,7 @@ const TaskCard = ({ task, moveTask, deleteTask, openEditModal }) => {
     const shareTask = () => {
         const link = `${window.location.origin}/task/${task.id}`;
         navigator.clipboard.writeText(link).then(() => alert("Link copied to clipboard"));
-        setIsMenuOpen(false); // Close the menu after sharing
+        setIsMenuOpen(false); 
     };
 
     const renderMoveButtons = () => {
