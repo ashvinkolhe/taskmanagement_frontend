@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
-import React from 'react';
+import React, { useState } from 'react';
 import styles from './Logout.module.css';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
@@ -22,23 +22,25 @@ function LogoutModal({ closeModal, setIsAuthenticated }) {
       );
 
       // Check if logout was successful
-      if (response.status === 200) {
+      if (response.data.status === 'success') {
         // Clear local storage
         localStorage.removeItem('authtoken');
         localStorage.removeItem('Name');
 
         // Update authentication state
-        setIsAuthenticated(false); // Ensure the app knows the user is logged out
+        if (typeof setIsAuthenticated === 'function') {
+          setIsAuthenticated(false);
+        }
 
         // Close the modal before redirecting
-        closeModal(false); 
-        
+        closeModal(false);
+
         // Redirect to login page
         nav('/login');
       }
     } catch (error) {
       console.error('Logout failed:', error);
-      // Optionally handle logout error, e.g., show a notification to the user
+      // Handle error appropriately
     }
   };
 
@@ -67,3 +69,4 @@ function LogoutModal({ closeModal, setIsAuthenticated }) {
 }
 
 export default LogoutModal;
+

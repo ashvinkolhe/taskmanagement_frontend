@@ -1,6 +1,5 @@
-// Login.jsx
-/* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
+/* eslint-disable react/prop-types */
 import React, { useState } from 'react';
 import styles from './Login.module.css';
 import axios from 'axios';
@@ -51,6 +50,7 @@ const PasswordInput = ({ value, onChange, showPassword, togglePasswordVisibility
 
 const Login = () => {
     const navigate = useNavigate();
+    const [isAuthenticated, setIsAuthenticated] = useState(false);
     const [userDetails, setUserDetails] = useState({ email: '', password: '' });
     const [showPassword, setShowPassword] = useState(false);
     const [error, setError] = useState({ email: '', password: '' });
@@ -71,30 +71,27 @@ const Login = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        if (!validateFields()) return; // Validate input before proceeding
+
+        if (!validateFields()) return;
 
         try {
             const { data } = await axios.post('https://taskmanagement-backend-9ztm.onrender.com/api/users/login', userDetails);
 
-            console.log('Response from backend:', data);
-
-            if (data && data.status === "success") { // Ensure data and status are checked
+            if (data?.status === "success") {
                 localStorage.setItem('authToken', data.token);
                 localStorage.setItem('Name', data.user.email);
                 localStorage.setItem('id', data.user.id);
-                toast.success('Login Successful'); // Notify success
 
-                navigate('/dashboard'); // Navigate to dashboard
+                toast.success('Login Successful');
+                setIsAuthenticated(true);
+                navigate('/dashboard');
             } else {
-                toast.error('Invalid Credentials'); // Notify invalid credentials
+                toast.error('Invalid Credentials');
             }
         } catch (error) {
             console.error('Login Error:', error);
-            if (error.response) {
-                toast.error(error.response.data.message || 'Login failed. Please try again.'); // Notify specific error message
-            } else {
-                toast.error('Login failed. Please check your network and try again.'); // Notify network error
-            }
+            const message = error.response?.data?.message || 'Login failed. Please try again.';
+            toast.error(message);
         }
     };
 
