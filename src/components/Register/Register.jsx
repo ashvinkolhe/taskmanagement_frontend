@@ -15,9 +15,9 @@ import HideEye from '../../assets/images/eye-password-hide.svg';
 const Register = () => {
   const navigate = useNavigate(); // Hook for navigation
   const [userDetails, setUserDetails] = useState({ // State to hold user details
-    Name: '',
+    name: '',
     email: '',
-    Password: '',
+    password: '',
     confirmPassword: '',
   });
 
