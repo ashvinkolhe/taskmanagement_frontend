@@ -50,7 +50,6 @@ const PasswordInput = ({ value, onChange, showPassword, togglePasswordVisibility
 
 const Login = () => {
     const navigate = useNavigate();
-    const [isAuthenticated, setIsAuthenticated] = useState(false);
     const [userDetails, setUserDetails] = useState({ email: '', password: '' });
     const [showPassword, setShowPassword] = useState(false);
     const [error, setError] = useState({ email: '', password: '' });
@@ -75,7 +74,10 @@ const Login = () => {
         if (!validateFields()) return;
 
         try {
-            const { data } = await axios.post('https://taskmanagement-backend-9ztm.onrender.com/api/users/login', userDetails);
+            const { data } = await axios.post('https://taskmanagement-backend-9ztm.onrender.com/api/users/login', {
+                email: userDetails.email,
+                password: userDetails.password
+            });
 
             if (data?.status === "success") {
                 localStorage.setItem('authToken', data.token);
@@ -83,7 +85,6 @@ const Login = () => {
                 localStorage.setItem('id', data.user.id);
 
                 toast.success('Login Successful');
-                setIsAuthenticated(true);
                 navigate('/dashboard');
             } else {
                 toast.error('Invalid Credentials');
