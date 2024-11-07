@@ -93,7 +93,7 @@ const Dashboard = () => {
   const renderTasks = (state) => {
     const filteredTasks = filterTasks(tasks, filter);
     return filteredTasks
-      .filter((task) => task.state === state && task.username == username)
+      .filter((task) => task.state === state)
       .map((task) => (
         <TaskCard
           key={task.id}
